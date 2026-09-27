@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F1626"/>
+      <stop offset="100%" stop-color="#050810"/>
+    </linearGradient>
+
+    <!-- Arrow Glow Effects -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="heavyGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#EAB308" flood-opacity="0.9" result="shadow1"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#D97706" flood-opacity="0.75" result="shadow2"/>
+      <feMerge>
+        <feMergeNode in="shadow2" />
+        <feMergeNode in="shadow1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer Dark Border -->
+  <rect x="0" y="0" width="512" height="512" rx="128" fill="#030509"/>
+  
+  <!-- Main Squircle -->
+  <rect x="12" y="12" width="488" height="488" rx="116" fill="url(#bg)" stroke="#1E293B" stroke-width="4"/>
+  
+  <!-- Bottom Pill under triangle -->
+  <rect x="180" y="394" width="152" height="38" rx="19" fill="#182133" stroke="#2B3A55" stroke-width="2"/>
+
+  <!-- Triangle (Base at 370, tip at 158) -->
+  <polygon points="256,158 118,370 256,370" fill="#29354D"/>
+  <polygon points="256,158 256,370 394,370" fill="#1D2638"/>
+  
+  <!-- Candlesticks (Green: #10B981) -->
+  <!-- Left Candlestick -->
+  <line x1="160" y1="280" x2="160" y2="350" stroke="#10B981" stroke-width="6" stroke-linecap="round"/>
+  <rect x="152" y="295" width="16" height="28" fill="#10B981" rx="4"/>
+
+  <!-- Middle Candlestick -->
+  <line x1="256" y1="210" x2="256" y2="300" stroke="#10B981" stroke-width="6" stroke-linecap="round"/>
+  <rect x="248" y="225" width="16" height="45" fill="#10B981" rx="4"/>
+
+  <!-- Right Candlestick -->
+  <line x1="340" y1="160" x2="340" y2="260" stroke="#10B981" stroke-width="6" stroke-linecap="round"/>
+  <rect x="332" y="175" width="16" height="55" fill="#10B981" rx="4"/>
+
+  <!-- Arrow Body -->
+  <path d="M 104 340 Q 250 310, 390 148" fill="none" stroke="#FEF08A" stroke-width="12" stroke-linecap="round" filter="url(#heavyGlow)"/>
+  
+  <!-- Arrow Head -->
+  <polygon points="370,135 410,135 390,165" fill="#FEF08A" filter="url(#glow)"/>
+
+  <!-- Center Dot (Intersecting Middle Candlestick) -->
+  <circle cx="256" cy="254" r="8" fill="#FEF08A" filter="url(#glow)"/>
+</svg>
